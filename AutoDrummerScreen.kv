@@ -1,0 +1,1623 @@
+ScreenManagement:
+    MainMenuScreen:
+    DrumsScreen:
+
+<MainMenuScreen>
+    name: "MainMenuScreen"
+
+    tempo_set: set_tempo
+
+
+    GridLayout:
+        size: root.width, root.height
+        cols: 1
+
+        GridLayout:                                 
+            size: root.width, root.height
+            size_hint: 0.1, 0.1
+            cols: 6
+
+            TextInput:
+                id: set_tempo
+                text: "80"
+
+            Button:
+                id: set_tempo_button
+                text: "SET TEMPO"
+                on_release: root.tempo()
+
+            Label:
+                text: "METRUM"
+
+            Spinner:
+                id: choose_metrum
+                text: "CHOOSE METRUM"
+
+                values: ["4", "8", "16", "32"]
+                on_text: root.metrum(self.text)
+
+        GridLayout:                                 
+            size: root.width, root.height
+            size_hint: 0.1, 0.1
+            cols: 2
+
+            Button:
+                id: "generate"
+                text: "GENERATE MP3"
+                on_release: root.generate()
+
+            Button:
+                id: "play"
+                text: "PLAY"
+                on_release: root.play_sound("drums")
+
+
+        GridLayout:
+            size: root.width, root.height
+            size_hint: root.width, 0.1
+            cols: 1
+
+            Button:
+                text: "START COMPOSING"
+                on_release:
+                    app.root.current = "DrumsScreen"
+                    root.manager.transition.direction = "left"
+
+
+<DrumsScreen>
+    name: "DrumsScreen"
+
+    GridLayout:
+        size: root.width, root.height
+        cols: 1
+
+        GridLayout:
+            size: root.width, root.height
+            cols: 2
+
+            GridLayout:
+                cols: 1
+                size: root.width, root.height
+                size_hint: 0.1, root.height
+
+                Button:
+                    text: "CRASH"
+                    on_release: root.manager.get_screen("MainMenuScreen").play_sound("crash")
+
+                Button:
+                    text: "RIDE"
+                    on_release: root.manager.get_screen("MainMenuScreen").play_sound("ride")
+
+                Button:
+                    text: "OPEN HAT"
+                    on_release: root.manager.get_screen("MainMenuScreen").play_sound("opened_hat")
+
+
+                Button:
+                    text: "CLOSE HAT"
+                    on_release: root.manager.get_screen("MainMenuScreen").play_sound("closed_hat")
+
+                Button:
+                    text: "HIGH TOM"
+                    on_release: root.manager.get_screen("MainMenuScreen").play_sound("high_tom")
+
+                Button:
+                    text: "MIDDLE TOM"
+                    on_release: root.manager.get_screen("MainMenuScreen").play_sound("middle_tom")
+
+                Button:
+                    text: "LOW TOM"
+                    on_release: root.manager.get_screen("MainMenuScreen").play_sound("low_tom")
+
+                Button:
+                    text: "SNARE"
+                    on_release: root.manager.get_screen("MainMenuScreen").play_sound("snare")
+
+                Button:
+                    text: "KICK"
+                    on_release: root.manager.get_screen("MainMenuScreen").play_sound("kick")
+
+
+            GridLayout:
+                size: root.width, root.height
+                pos: 0, 0
+                cols: 32
+
+                CheckBox:
+                    id: 911
+                    active: root.checkbox_active[911] == True
+                    on_release: root.checkbox_click(self, self.active, "911")
+                    
+                CheckBox:
+                    id: 912
+                    active: root.checkbox_active[912] == True
+                    on_release: root.checkbox_click(self, self.active, "912")
+                
+                CheckBox:
+                    id: 913
+                    active: root.checkbox_active[913] == True
+                    on_release: root.checkbox_click(self, self.active, "913")
+                    
+                CheckBox:
+                    id: 914
+                    active: root.checkbox_active[914] == True
+                    on_release: root.checkbox_click(self, self.active, "914")
+                
+                CheckBox:
+                    id: 915
+                    active: root.checkbox_active[915] == True
+                    on_release: root.checkbox_click(self, self.active, "915")
+                    
+                CheckBox:
+                    id: 916
+                    active: root.checkbox_active[916] == True
+                    on_release: root.checkbox_click(self, self.active, "916")
+                
+                CheckBox:
+                    id: 917
+                    active: root.checkbox_active[917] == True
+                    on_release: root.checkbox_click(self, self.active, "917")
+                    
+                CheckBox:
+                    id: 918
+                    active: root.checkbox_active[918] == True
+                    on_release: root.checkbox_click(self, self.active, "918")
+                
+                CheckBox:
+                    id: 919
+                    active: root.checkbox_active[919] == True
+                    on_release: root.checkbox_click(self, self.active, "919")
+                    
+                CheckBox:
+                    id: 920
+                    active: root.checkbox_active[920] == True
+                    on_release: root.checkbox_click(self, self.active, "920")
+                
+                CheckBox:
+                    id: 921
+                    active: root.checkbox_active[921] == True
+                    on_release: root.checkbox_click(self, self.active, "921")
+                    
+                CheckBox:
+                    id: 922
+                    active: root.checkbox_active[922] == True
+                    on_release: root.checkbox_click(self, self.active, "922")
+                
+                CheckBox:
+                    id: 923
+                    active: root.checkbox_active[923] == True
+                    on_release: root.checkbox_click(self, self.active, "923")
+                    
+                CheckBox:
+                    id: 924
+                    active: root.checkbox_active[924] == True
+                    on_release: root.checkbox_click(self, self.active, "924")
+                
+                CheckBox:
+                    id: 925
+                    active: root.checkbox_active[925] == True
+                    on_release: root.checkbox_click(self, self.active, "925")
+                    
+                CheckBox:
+                    id: 926
+                    active: root.checkbox_active[926] == True
+                    on_release: root.checkbox_click(self, self.active, "926")
+
+                CheckBox:
+                    id: 927
+                    active: root.checkbox_active[927] == True
+                    on_release: root.checkbox_click(self, self.active, "927")
+                    
+                CheckBox:
+                    id: 928
+                    active: root.checkbox_active[928] == True
+                    on_release: root.checkbox_click(self, self.active, "928")
+                
+                CheckBox:
+                    id: 929
+                    active: root.checkbox_active[929] == True
+                    on_release: root.checkbox_click(self, self.active, "929")
+                    
+                CheckBox:
+                    id: 930
+                    active: root.checkbox_active[930] == True
+                    on_release: root.checkbox_click(self, self.active, "930")
+                
+                CheckBox:
+                    id: 931
+                    active: root.checkbox_active[931] == True
+                    on_release: root.checkbox_click(self, self.active, "931")
+                    
+                CheckBox:
+                    id: 932
+                    active: root.checkbox_active[932] == True
+                    on_release: root.checkbox_click(self, self.active, "932")
+                
+                CheckBox:
+                    id: 933
+                    active: root.checkbox_active[933] == True
+                    on_release: root.checkbox_click(self, self.active, "933")
+                    
+                CheckBox:
+                    id: 934
+                    active: root.checkbox_active[934] == True
+                    on_release: root.checkbox_click(self, self.active, "934")
+                
+                CheckBox:
+                    id: 935
+                    active: root.checkbox_active[935] == True
+                    on_release: root.checkbox_click(self, self.active, "935")
+                    
+                CheckBox:
+                    id: 936
+                    active: root.checkbox_active[936] == True
+                    on_release: root.checkbox_click(self, self.active, "936")
+                
+                CheckBox:
+                    id: 937
+                    active: root.checkbox_active[937] == True
+                    on_release: root.checkbox_click(self, self.active, "937")
+                    
+                CheckBox:
+                    id: 938
+                    active: root.checkbox_active[938] == True
+                    on_release: root.checkbox_click(self, self.active, "938")
+                
+                CheckBox:
+                    id: 939
+                    active: root.checkbox_active[939] == True
+                    on_release: root.checkbox_click(self, self.active, "939")
+                    
+                CheckBox:
+                    id: 940
+                    active: root.checkbox_active[940] == True
+                    on_release: root.checkbox_click(self, self.active, "940")
+                
+                CheckBox:
+                    id: 941
+                    active: root.checkbox_active[941] == True
+                    on_release: root.checkbox_click(self, self.active, "941")
+                    
+                CheckBox:
+                    id: 942
+                    active: root.checkbox_active[942] == True
+                    on_release: root.checkbox_click(self, self.active, "942")
+
+                CheckBox:
+                    id: 811
+                    active: root.checkbox_active[811] == True
+                    on_release: root.checkbox_click(self, self.active, "811")
+                    
+                CheckBox:
+                    id: 812
+                    active: root.checkbox_active[812] == True
+                    on_release: root.checkbox_click(self, self.active, "812")
+                
+                CheckBox:
+                    id: 813
+                    active: root.checkbox_active[813] == True
+                    on_release: root.checkbox_click(self, self.active, "813")
+                    
+                CheckBox:
+                    id: 814
+                    active: root.checkbox_active[814] == True
+                    on_release: root.checkbox_click(self, self.active, "814")
+                
+                CheckBox:
+                    id: 815
+                    active: root.checkbox_active[815] == True
+                    on_release: root.checkbox_click(self, self.active, "815")
+                    
+                CheckBox:
+                    id: 816
+                    active: root.checkbox_active[816] == True
+                    on_release: root.checkbox_click(self, self.active, "816")
+                
+                CheckBox:
+                    id: 817
+                    active: root.checkbox_active[817] == True
+                    on_release: root.checkbox_click(self, self.active, "817")
+                    
+                CheckBox:
+                    id: 818
+                    active: root.checkbox_active[818] == True
+                    on_release: root.checkbox_click(self, self.active, "818")
+                
+                CheckBox:
+                    id: 819
+                    active: root.checkbox_active[819] == True
+                    on_release: root.checkbox_click(self, self.active, "819")
+                    
+                CheckBox:
+                    id: 820
+                    active: root.checkbox_active[820] == True
+                    on_release: root.checkbox_click(self, self.active, "820")
+                
+                CheckBox:
+                    id: 821
+                    active: root.checkbox_active[821] == True
+                    on_release: root.checkbox_click(self, self.active, "821")
+                    
+                CheckBox:
+                    id: 822
+                    active: root.checkbox_active[822] == True
+                    on_release: root.checkbox_click(self, self.active, "822")
+                
+                CheckBox:
+                    id: 823
+                    active: root.checkbox_active[823] == True
+                    on_release: root.checkbox_click(self, self.active, "823")
+                    
+                CheckBox:
+                    id: 824
+                    active: root.checkbox_active[824] == True
+                    on_release: root.checkbox_click(self, self.active, "824")
+                
+                CheckBox:
+                    id: 825
+                    active: root.checkbox_active[825] == True
+                    on_release: root.checkbox_click(self, self.active, "825")
+                    
+                CheckBox:
+                    id: 826
+                    active: root.checkbox_active[826] == True
+                    on_release: root.checkbox_click(self, self.active, "826")
+
+                CheckBox:
+                    id: 827
+                    active: root.checkbox_active[827] == True
+                    on_release: root.checkbox_click(self, self.active, "827")
+                    
+                CheckBox:
+                    id: 828
+                    active: root.checkbox_active[828] == True
+                    on_release: root.checkbox_click(self, self.active, "828")
+                
+                CheckBox:
+                    id: 829
+                    active: root.checkbox_active[829] == True
+                    on_release: root.checkbox_click(self, self.active, "829")
+                    
+                CheckBox:
+                    id: 830
+                    active: root.checkbox_active[830] == True
+                    on_release: root.checkbox_click(self, self.active, "830")
+                
+                CheckBox:
+                    id: 831
+                    active: root.checkbox_active[831] == True
+                    on_release: root.checkbox_click(self, self.active, "831")
+                    
+                CheckBox:
+                    id: 832
+                    active: root.checkbox_active[832] == True
+                    on_release: root.checkbox_click(self, self.active, "832")
+                
+                CheckBox:
+                    id: 833
+                    active: root.checkbox_active[833] == True
+                    on_release: root.checkbox_click(self, self.active, "833")
+                    
+                CheckBox:
+                    id: 834
+                    active: root.checkbox_active[834] == True
+                    on_release: root.checkbox_click(self, self.active, "834")
+                
+                CheckBox:
+                    id: 835
+                    active: root.checkbox_active[835] == True
+                    on_release: root.checkbox_click(self, self.active, "835")
+                    
+                CheckBox:
+                    id: 836
+                    active: root.checkbox_active[836] == True
+                    on_release: root.checkbox_click(self, self.active, "836")
+                
+                CheckBox:
+                    id: 837
+                    active: root.checkbox_active[837] == True
+                    on_release: root.checkbox_click(self, self.active, "837")
+                    
+                CheckBox:
+                    id: 838
+                    active: root.checkbox_active[838] == True
+                    on_release: root.checkbox_click(self, self.active, "838")
+                
+                CheckBox:
+                    id: 839
+                    active: root.checkbox_active[839] == True
+                    on_release: root.checkbox_click(self, self.active, "839")
+                    
+                CheckBox:
+                    id: 840
+                    active: root.checkbox_active[840] == True
+                    on_release: root.checkbox_click(self, self.active, "840")
+                
+                CheckBox:
+                    id: 841
+                    active: root.checkbox_active[841] == True
+                    on_release: root.checkbox_click(self, self.active, "841")
+                    
+                CheckBox:
+                    id: 842
+                    active: root.checkbox_active[842] == True
+                    on_release: root.checkbox_click(self, self.active, "842")
+
+                CheckBox:
+                    id: 711
+                    active: root.checkbox_active[711] == True
+                    on_release: root.checkbox_click(self, self.active, "711")
+                    
+                CheckBox:
+                    id: 712
+                    active: root.checkbox_active[712] == True
+                    on_release: root.checkbox_click(self, self.active, "712")
+                
+                CheckBox:
+                    id: 713
+                    active: root.checkbox_active[713] == True
+                    on_release: root.checkbox_click(self, self.active, "713")
+                    
+                CheckBox:
+                    id: 714
+                    active: root.checkbox_active[714] == True
+                    on_release: root.checkbox_click(self, self.active, "714")
+                
+                CheckBox:
+                    id: 715
+                    active: root.checkbox_active[715] == True
+                    on_release: root.checkbox_click(self, self.active, "715")
+                    
+                CheckBox:
+                    id: 716
+                    active: root.checkbox_active[716] == True
+                    on_release: root.checkbox_click(self, self.active, "716")
+                
+                CheckBox:
+                    id: 717
+                    active: root.checkbox_active[717] == True
+                    on_release: root.checkbox_click(self, self.active, "717")
+                    
+                CheckBox:
+                    id: 718
+                    active: root.checkbox_active[718] == True
+                    on_release: root.checkbox_click(self, self.active, "718")
+                
+                CheckBox:
+                    id: 719
+                    active: root.checkbox_active[719] == True
+                    on_release: root.checkbox_click(self, self.active, "719")
+                    
+                CheckBox:
+                    id: 720
+                    active: root.checkbox_active[720] == True
+                    on_release: root.checkbox_click(self, self.active, "720")
+                
+                CheckBox:
+                    id: 721
+                    active: root.checkbox_active[721] == True
+                    on_release: root.checkbox_click(self, self.active, "721")
+                    
+                CheckBox:
+                    id: 722
+                    active: root.checkbox_active[722] == True
+                    on_release: root.checkbox_click(self, self.active, "722")
+                
+                CheckBox:
+                    id: 723
+                    active: root.checkbox_active[723] == True
+                    on_release: root.checkbox_click(self, self.active, "723")
+                    
+                CheckBox:
+                    id: 724
+                    active: root.checkbox_active[724] == True
+                    on_release: root.checkbox_click(self, self.active, "724")
+                
+                CheckBox:
+                    id: 725
+                    active: root.checkbox_active[725] == True
+                    on_release: root.checkbox_click(self, self.active, "725")
+                    
+                CheckBox:
+                    id: 726
+                    active: root.checkbox_active[726] == True
+                    on_release: root.checkbox_click(self, self.active, "726")
+
+                CheckBox:
+                    id: 727
+                    active: root.checkbox_active[727] == True
+                    on_release: root.checkbox_click(self, self.active, "727")
+                    
+                CheckBox:
+                    id: 728
+                    active: root.checkbox_active[728] == True
+                    on_release: root.checkbox_click(self, self.active, "728")
+                
+                CheckBox:
+                    id: 729
+                    active: root.checkbox_active[729] == True
+                    on_release: root.checkbox_click(self, self.active, "729")
+                    
+                CheckBox:
+                    id: 730
+                    active: root.checkbox_active[730] == True
+                    on_release: root.checkbox_click(self, self.active, "730")
+                
+                CheckBox:
+                    id: 731
+                    active: root.checkbox_active[731] == True
+                    on_release: root.checkbox_click(self, self.active, "731")
+                    
+                CheckBox:
+                    id: 732
+                    active: root.checkbox_active[732] == True
+                    on_release: root.checkbox_click(self, self.active, "732")
+                
+                CheckBox:
+                    id: 733
+                    active: root.checkbox_active[733] == True
+                    on_release: root.checkbox_click(self, self.active, "733")
+                    
+                CheckBox:
+                    id: 734
+                    active: root.checkbox_active[734] == True
+                    on_release: root.checkbox_click(self, self.active, "734")
+                
+                CheckBox:
+                    id: 735
+                    active: root.checkbox_active[735] == True
+                    on_release: root.checkbox_click(self, self.active, "735")
+                    
+                CheckBox:
+                    id: 736
+                    active: root.checkbox_active[736] == True
+                    on_release: root.checkbox_click(self, self.active, "736")
+                
+                CheckBox:
+                    id: 737
+                    active: root.checkbox_active[737] == True
+                    on_release: root.checkbox_click(self, self.active, "737")
+                    
+                CheckBox:
+                    id: 738
+                    active: root.checkbox_active[738] == True
+                    on_release: root.checkbox_click(self, self.active, "738")
+                
+                CheckBox:
+                    id: 739
+                    active: root.checkbox_active[739] == True
+                    on_release: root.checkbox_click(self, self.active, "739")
+                    
+                CheckBox:
+                    id: 740
+                    active: root.checkbox_active[740] == True
+                    on_release: root.checkbox_click(self, self.active, "740")
+                
+                CheckBox:
+                    id: 741
+                    active: root.checkbox_active[741] == True
+                    on_release: root.checkbox_click(self, self.active, "741")
+                    
+                CheckBox:
+                    id: 742
+                    active: root.checkbox_active[742] == True
+                    on_release: root.checkbox_click(self, self.active, "742")
+
+
+                #Label:
+                #    text: "CLOSE HAT"
+
+                CheckBox:
+                    id: 611
+                    active: root.checkbox_active[611] == True
+                    on_release: root.checkbox_click(self, self.active, "611")
+                    
+                CheckBox:
+                    id: 612
+                    active: root.checkbox_active[612] == True
+                    on_release: root.checkbox_click(self, self.active, "612")
+                
+                CheckBox:
+                    id: 613
+                    active: root.checkbox_active[613] == True
+                    on_release: root.checkbox_click(self, self.active, "613")
+                    
+                CheckBox:
+                    id: 614
+                    active: root.checkbox_active[614] == True
+                    on_release: root.checkbox_click(self, self.active, "614")
+                
+                CheckBox:
+                    id: 615
+                    active: root.checkbox_active[615] == True
+                    on_release: root.checkbox_click(self, self.active, "615")
+                    
+                CheckBox:
+                    id: 616
+                    active: root.checkbox_active[616] == True
+                    on_release: root.checkbox_click(self, self.active, "616")
+                
+                CheckBox:
+                    id: 617
+                    active: root.checkbox_active[617] == True
+                    on_release: root.checkbox_click(self, self.active, "617")
+                    
+                CheckBox:
+                    id: 618
+                    active: root.checkbox_active[618] == True
+                    on_release: root.checkbox_click(self, self.active, "618")
+                
+                CheckBox:
+                    id: 619
+                    active: root.checkbox_active[619] == True
+                    on_release: root.checkbox_click(self, self.active, "619")
+                    
+                CheckBox:
+                    id: 620
+                    active: root.checkbox_active[620] == True
+                    on_release: root.checkbox_click(self, self.active, "620")
+                
+                CheckBox:
+                    id: 621
+                    active: root.checkbox_active[621] == True
+                    on_release: root.checkbox_click(self, self.active, "621")
+                    
+                CheckBox:
+                    id: 622
+                    active: root.checkbox_active[622] == True
+                    on_release: root.checkbox_click(self, self.active, "622")
+                
+                CheckBox:
+                    id: 623
+                    active: root.checkbox_active[623] == True
+                    on_release: root.checkbox_click(self, self.active, "623")
+                    
+                CheckBox:
+                    id: 624
+                    active: root.checkbox_active[624] == True
+                    on_release: root.checkbox_click(self, self.active, "624")
+                
+                CheckBox:
+                    id: 625
+                    active: root.checkbox_active[625] == True
+                    on_release: root.checkbox_click(self, self.active, "625")
+                    
+                CheckBox:
+                    id: 626
+                    active: root.checkbox_active[626] == True
+                    on_release: root.checkbox_click(self, self.active, "626")
+
+                CheckBox:
+                    id: 627
+                    active: root.checkbox_active[627] == True
+                    on_release: root.checkbox_click(self, self.active, "627")
+                    
+                CheckBox:
+                    id: 628
+                    active: root.checkbox_active[628] == True
+                    on_release: root.checkbox_click(self, self.active, "628")
+                
+                CheckBox:
+                    id: 629
+                    active: root.checkbox_active[629] == True
+                    on_release: root.checkbox_click(self, self.active, "629")
+                    
+                CheckBox:
+                    id: 630
+                    active: root.checkbox_active[630] == True
+                    on_release: root.checkbox_click(self, self.active, "630")
+                
+                CheckBox:
+                    id: 631
+                    active: root.checkbox_active[631] == True
+                    on_release: root.checkbox_click(self, self.active, "631")
+                    
+                CheckBox:
+                    id: 632
+                    active: root.checkbox_active[632] == True
+                    on_release: root.checkbox_click(self, self.active, "632")
+                
+                CheckBox:
+                    id: 633
+                    active: root.checkbox_active[633] == True
+                    on_release: root.checkbox_click(self, self.active, "633")
+                    
+                CheckBox:
+                    id: 634
+                    active: root.checkbox_active[634] == True
+                    on_release: root.checkbox_click(self, self.active, "634")
+                
+                CheckBox:
+                    id: 635
+                    active: root.checkbox_active[635] == True
+                    on_release: root.checkbox_click(self, self.active, "635")
+                    
+                CheckBox:
+                    id: 636
+                    active: root.checkbox_active[636] == True
+                    on_release: root.checkbox_click(self, self.active, "636")
+                
+                CheckBox:
+                    id: 637
+                    active: root.checkbox_active[637] == True
+                    on_release: root.checkbox_click(self, self.active, "637")
+                    
+                CheckBox:
+                    id: 638
+                    active: root.checkbox_active[638] == True
+                    on_release: root.checkbox_click(self, self.active, "638")
+                
+                CheckBox:
+                    id: 639
+                    active: root.checkbox_active[639] == True
+                    on_release: root.checkbox_click(self, self.active, "639")
+                    
+                CheckBox:
+                    id: 640
+                    active: root.checkbox_active[640] == True
+                    on_release: root.checkbox_click(self, self.active, "640")
+                
+                CheckBox:
+                    id: 641
+                    active: root.checkbox_active[641] == True
+                    on_release: root.checkbox_click(self, self.active, "641")
+                    
+                CheckBox:
+                    id: 642
+                    active: root.checkbox_active[642] == True
+                    on_release: root.checkbox_click(self, self.active, "642")
+        
+                #Label:
+                #    text: "HIGH TOM"
+
+                CheckBox:
+                    id: 511
+                    active: root.checkbox_active[511] == True
+                    on_release: root.checkbox_click(self, self.active, "511")
+                    
+                CheckBox:
+                    id: 512
+                    active: root.checkbox_active[512] == True
+                    on_release: root.checkbox_click(self, self.active, "512")
+                
+                CheckBox:
+                    id: 513
+                    active: root.checkbox_active[513] == True
+                    on_release: root.checkbox_click(self, self.active, "513")
+                    
+                CheckBox:
+                    id: 514
+                    active: root.checkbox_active[514] == True
+                    on_release: root.checkbox_click(self, self.active, "514")
+                
+                CheckBox:
+                    id: 515
+                    active: root.checkbox_active[515] == True
+                    on_release: root.checkbox_click(self, self.active, "515")
+                    
+                CheckBox:
+                    id: 516
+                    active: root.checkbox_active[516] == True
+                    on_release: root.checkbox_click(self, self.active, "516")
+                
+                CheckBox:
+                    id: 517
+                    active: root.checkbox_active[517] == True
+                    on_release: root.checkbox_click(self, self.active, "517")
+                    
+                CheckBox:
+                    id: 518
+                    active: root.checkbox_active[518] == True
+                    on_release: root.checkbox_click(self, self.active, "518")
+                
+                CheckBox:
+                    id: 519
+                    active: root.checkbox_active[519] == True
+                    on_release: root.checkbox_click(self, self.active, "519")
+                    
+                CheckBox:
+                    id: 520
+                    active: root.checkbox_active[520] == True
+                    on_release: root.checkbox_click(self, self.active, "520")
+                
+                CheckBox:
+                    id: 521
+                    active: root.checkbox_active[521] == True
+                    on_release: root.checkbox_click(self, self.active, "521")
+                    
+                CheckBox:
+                    id: 522
+                    active: root.checkbox_active[522] == True
+                    on_release: root.checkbox_click(self, self.active, "522")
+                
+                CheckBox:
+                    id: 523
+                    active: root.checkbox_active[523] == True
+                    on_release: root.checkbox_click(self, self.active, "523")
+                    
+                CheckBox:
+                    id: 524
+                    active: root.checkbox_active[524] == True
+                    on_release: root.checkbox_click(self, self.active, "524")
+                
+                CheckBox:
+                    id: 525
+                    active: root.checkbox_active[525] == True
+                    on_release: root.checkbox_click(self, self.active, "525")
+                    
+                CheckBox:
+                    id: 526
+                    active: root.checkbox_active[526] == True
+                    on_release: root.checkbox_click(self, self.active, "526")
+
+                CheckBox:
+                    id: 527
+                    active: root.checkbox_active[527] == True
+                    on_release: root.checkbox_click(self, self.active, "527")
+                    
+                CheckBox:
+                    id: 528
+                    active: root.checkbox_active[528] == True
+                    on_release: root.checkbox_click(self, self.active, "528")
+                
+                CheckBox:
+                    id: 529
+                    active: root.checkbox_active[529] == True
+                    on_release: root.checkbox_click(self, self.active, "529")
+                    
+                CheckBox:
+                    id: 530
+                    active: root.checkbox_active[530] == True
+                    on_release: root.checkbox_click(self, self.active, "530")
+                
+                CheckBox:
+                    id: 531
+                    active: root.checkbox_active[531] == True
+                    on_release: root.checkbox_click(self, self.active, "531")
+                    
+                CheckBox:
+                    id: 532
+                    active: root.checkbox_active[532] == True
+                    on_release: root.checkbox_click(self, self.active, "532")
+                
+                CheckBox:
+                    id: 533
+                    active: root.checkbox_active[533] == True
+                    on_release: root.checkbox_click(self, self.active, "533")
+                    
+                CheckBox:
+                    id: 534
+                    active: root.checkbox_active[534] == True
+                    on_release: root.checkbox_click(self, self.active, "534")
+                
+                CheckBox:
+                    id: 535
+                    active: root.checkbox_active[535] == True
+                    on_release: root.checkbox_click(self, self.active, "535")
+                    
+                CheckBox:
+                    id: 536
+                    active: root.checkbox_active[536] == True
+                    on_release: root.checkbox_click(self, self.active, "536")
+                
+                CheckBox:
+                    id: 537
+                    active: root.checkbox_active[537] == True
+                    on_release: root.checkbox_click(self, self.active, "537")
+                    
+                CheckBox:
+                    id: 538
+                    active: root.checkbox_active[538] == True
+                    on_release: root.checkbox_click(self, self.active, "538")
+                
+                CheckBox:
+                    id: 539
+                    active: root.checkbox_active[539] == True
+                    on_release: root.checkbox_click(self, self.active, "539")
+                    
+                CheckBox:
+                    id: 540
+                    active: root.checkbox_active[540] == True
+                    on_release: root.checkbox_click(self, self.active, "540")
+                
+                CheckBox:
+                    id: 541
+                    active: root.checkbox_active[541] == True
+                    on_release: root.checkbox_click(self, self.active, "541")
+                    
+                CheckBox:
+                    id: 542
+                    active: root.checkbox_active[542] == True
+                    on_release: root.checkbox_click(self, self.active, "542")
+
+                #Label:
+                #    text: "MIDDLE TOM"
+
+                CheckBox:
+                    id: 411
+                    active: root.checkbox_active[411] == True
+                    on_release: root.checkbox_click(self, self.active, "411")
+                    
+                CheckBox:
+                    id: 412
+                    active: root.checkbox_active[412] == True
+                    on_release: root.checkbox_click(self, self.active, "412")
+                
+                CheckBox:
+                    id: 413
+                    active: root.checkbox_active[413] == True
+                    on_release: root.checkbox_click(self, self.active, "413")
+                    
+                CheckBox:
+                    id: 414
+                    active: root.checkbox_active[414] == True
+                    on_release: root.checkbox_click(self, self.active, "414")
+                
+                CheckBox:
+                    id: 415
+                    active: root.checkbox_active[415] == True
+                    on_release: root.checkbox_click(self, self.active, "415")
+                    
+                CheckBox:
+                    id: 416
+                    active: root.checkbox_active[416] == True
+                    on_release: root.checkbox_click(self, self.active, "416")
+                
+                CheckBox:
+                    id: 417
+                    active: root.checkbox_active[417] == True
+                    on_release: root.checkbox_click(self, self.active, "417")
+                    
+                CheckBox:
+                    id: 418
+                    active: root.checkbox_active[418] == True
+                    on_release: root.checkbox_click(self, self.active, "418")
+                
+                CheckBox:
+                    id: 419
+                    active: root.checkbox_active[419] == True
+                    on_release: root.checkbox_click(self, self.active, "419")
+                    
+                CheckBox:
+                    id: 420
+                    active: root.checkbox_active[420] == True
+                    on_release: root.checkbox_click(self, self.active, "420")
+                
+                CheckBox:
+                    id: 421
+                    active: root.checkbox_active[421] == True
+                    on_release: root.checkbox_click(self, self.active, "421")
+                    
+                CheckBox:
+                    id: 422
+                    active: root.checkbox_active[422] == True
+                    on_release: root.checkbox_click(self, self.active, "422")
+                
+                CheckBox:
+                    id: 423
+                    active: root.checkbox_active[423] == True
+                    on_release: root.checkbox_click(self, self.active, "423")
+                    
+                CheckBox:
+                    id: 424
+                    active: root.checkbox_active[424] == True
+                    on_release: root.checkbox_click(self, self.active, "424")
+                
+                CheckBox:
+                    id: 425
+                    active: root.checkbox_active[425] == True
+                    on_release: root.checkbox_click(self, self.active, "425")
+                    
+                CheckBox:
+                    id: 426
+                    active: root.checkbox_active[426] == True
+                    on_release: root.checkbox_click(self, self.active, "426")
+
+                CheckBox:
+                    id: 427
+                    active: root.checkbox_active[427] == True
+                    on_release: root.checkbox_click(self, self.active, "427")
+                    
+                CheckBox:
+                    id: 428
+                    active: root.checkbox_active[428] == True
+                    on_release: root.checkbox_click(self, self.active, "428")
+                
+                CheckBox:
+                    id: 429
+                    active: root.checkbox_active[429] == True
+                    on_release: root.checkbox_click(self, self.active, "429")
+                    
+                CheckBox:
+                    id: 430
+                    active: root.checkbox_active[430] == True
+                    on_release: root.checkbox_click(self, self.active, "430")
+                
+                CheckBox:
+                    id: 431
+                    active: root.checkbox_active[431] == True
+                    on_release: root.checkbox_click(self, self.active, "431")
+                    
+                CheckBox:
+                    id: 432
+                    active: root.checkbox_active[432] == True
+                    on_release: root.checkbox_click(self, self.active, "432")
+                
+                CheckBox:
+                    id: 433
+                    active: root.checkbox_active[433] == True
+                    on_release: root.checkbox_click(self, self.active, "433")
+                    
+                CheckBox:
+                    id: 434
+                    active: root.checkbox_active[434] == True
+                    on_release: root.checkbox_click(self, self.active, "434")
+                
+                CheckBox:
+                    id: 435
+                    active: root.checkbox_active[435] == True
+                    on_release: root.checkbox_click(self, self.active, "435")
+                    
+                CheckBox:
+                    id: 436
+                    active: root.checkbox_active[436] == True
+                    on_release: root.checkbox_click(self, self.active, "436")
+                
+                CheckBox:
+                    id: 437
+                    active: root.checkbox_active[437] == True
+                    on_release: root.checkbox_click(self, self.active, "437")
+                    
+                CheckBox:
+                    id: 438
+                    active: root.checkbox_active[438] == True
+                    on_release: root.checkbox_click(self, self.active, "438")
+                
+                CheckBox:
+                    id: 439
+                    active: root.checkbox_active[439] == True
+                    on_release: root.checkbox_click(self, self.active, "439")
+                    
+                CheckBox:
+                    id: 440
+                    active: root.checkbox_active[440] == True
+                    on_release: root.checkbox_click(self, self.active, "440")
+                
+                CheckBox:
+                    id: 441
+                    active: root.checkbox_active[441] == True
+                    on_release: root.checkbox_click(self, self.active, "441")
+                    
+                CheckBox:
+                    id: 442
+                    active: root.checkbox_active[442] == True
+                    on_release: root.checkbox_click(self, self.active, "442")
+
+                #Label:
+                #    text: "LOW TOM"
+
+                CheckBox:
+                    id: 311
+                    active: root.checkbox_active[311] == True
+                    on_release: root.checkbox_click(self, self.active, "311")
+                    
+                CheckBox:
+                    id: 312
+                    active: root.checkbox_active[312] == True
+                    on_release: root.checkbox_click(self, self.active, "312")
+                
+                CheckBox:
+                    id: 313
+                    active: root.checkbox_active[313] == True
+                    on_release: root.checkbox_click(self, self.active, "313")
+                    
+                CheckBox:
+                    id: 314
+                    active: root.checkbox_active[314] == True
+                    on_release: root.checkbox_click(self, self.active, "314")
+                
+                CheckBox:
+                    id: 315
+                    active: root.checkbox_active[315] == True
+                    on_release: root.checkbox_click(self, self.active, "315")
+                    
+                CheckBox:
+                    id: 316
+                    active: root.checkbox_active[316] == True
+                    on_release: root.checkbox_click(self, self.active, "316")
+                
+                CheckBox:
+                    id: 317
+                    active: root.checkbox_active[317] == True
+                    on_release: root.checkbox_click(self, self.active, "317")
+                    
+                CheckBox:
+                    id: 318
+                    active: root.checkbox_active[318] == True
+                    on_release: root.checkbox_click(self, self.active, "318")
+                
+                CheckBox:
+                    id: 319
+                    active: root.checkbox_active[319] == True
+                    on_release: root.checkbox_click(self, self.active, "319")
+                    
+                CheckBox:
+                    id: 320
+                    active: root.checkbox_active[320] == True
+                    on_release: root.checkbox_click(self, self.active, "320")
+                
+                CheckBox:
+                    id: 321
+                    active: root.checkbox_active[321] == True
+                    on_release: root.checkbox_click(self, self.active, "321")
+                    
+                CheckBox:
+                    id: 322
+                    active: root.checkbox_active[322] == True
+                    on_release: root.checkbox_click(self, self.active, "322")
+                
+                CheckBox:
+                    id: 323
+                    active: root.checkbox_active[323] == True
+                    on_release: root.checkbox_click(self, self.active, "323")
+                    
+                CheckBox:
+                    id: 324
+                    active: root.checkbox_active[324] == True
+                    on_release: root.checkbox_click(self, self.active, "324")
+                
+                CheckBox:
+                    id: 325
+                    active: root.checkbox_active[325] == True
+                    on_release: root.checkbox_click(self, self.active, "325")
+                    
+                CheckBox:
+                    id: 326
+                    active: root.checkbox_active[326] == True
+                    on_release: root.checkbox_click(self, self.active, "326")
+
+                CheckBox:
+                    id: 327
+                    active: root.checkbox_active[327] == True
+                    on_release: root.checkbox_click(self, self.active, "327")
+                    
+                CheckBox:
+                    id: 328
+                    active: root.checkbox_active[328] == True
+                    on_release: root.checkbox_click(self, self.active, "328")
+                
+                CheckBox:
+                    id: 329
+                    active: root.checkbox_active[329] == True
+                    on_release: root.checkbox_click(self, self.active, "329")
+                    
+                CheckBox:
+                    id: 330
+                    active: root.checkbox_active[330] == True
+                    on_release: root.checkbox_click(self, self.active, "330")
+                
+                CheckBox:
+                    id: 331
+                    active: root.checkbox_active[331] == True
+                    on_release: root.checkbox_click(self, self.active, "331")
+                    
+                CheckBox:
+                    id: 332
+                    active: root.checkbox_active[332] == True
+                    on_release: root.checkbox_click(self, self.active, "332")
+                
+                CheckBox:
+                    id: 333
+                    active: root.checkbox_active[333] == True
+                    on_release: root.checkbox_click(self, self.active, "333")
+                    
+                CheckBox:
+                    id: 334
+                    active: root.checkbox_active[334] == True
+                    on_release: root.checkbox_click(self, self.active, "334")
+                
+                CheckBox:
+                    id: 335
+                    active: root.checkbox_active[335] == True
+                    on_release: root.checkbox_click(self, self.active, "335")
+                    
+                CheckBox:
+                    id: 336
+                    active: root.checkbox_active[336] == True
+                    on_release: root.checkbox_click(self, self.active, "336")
+                
+                CheckBox:
+                    id: 337
+                    active: root.checkbox_active[337] == True
+                    on_release: root.checkbox_click(self, self.active, "337")
+                    
+                CheckBox:
+                    id: 338
+                    active: root.checkbox_active[338] == True
+                    on_release: root.checkbox_click(self, self.active, "338")
+                
+                CheckBox:
+                    id: 339
+                    active: root.checkbox_active[339] == True
+                    on_release: root.checkbox_click(self, self.active, "339")
+                    
+                CheckBox:
+                    id: 340
+                    active: root.checkbox_active[340] == True
+                    on_release: root.checkbox_click(self, self.active, "340")
+                
+                CheckBox:
+                    id: 341
+                    active: root.checkbox_active[341] == True
+                    on_release: root.checkbox_click(self, self.active, "341")
+                    
+                CheckBox:
+                    id: 342
+                    active: root.checkbox_active[342] == True
+                    on_release: root.checkbox_click(self, self.active, "342")
+
+                #Label:
+                #    text: "SNARE"
+
+                CheckBox:
+                    id: 211
+                    active: root.checkbox_active[211] == True
+                    on_release: root.checkbox_click(self, self.active, "211")
+                    
+                CheckBox:
+                    id: 212
+                    active: root.checkbox_active[212] == True
+                    on_release: root.checkbox_click(self, self.active, "212")
+                
+                CheckBox:
+                    id: 213
+                    active: root.checkbox_active[213] == True
+                    on_release: root.checkbox_click(self, self.active, "213")
+                    
+                CheckBox:
+                    id: 214
+                    active: root.checkbox_active[214] == True
+                    on_release: root.checkbox_click(self, self.active, "214")
+                
+                CheckBox:
+                    id: 215
+                    active: root.checkbox_active[215] == True
+                    on_release: root.checkbox_click(self, self.active, "215")
+                    
+                CheckBox:
+                    id: 216
+                    active: root.checkbox_active[216] == True
+                    on_release: root.checkbox_click(self, self.active, "216")
+                
+                CheckBox:
+                    id: 217
+                    active: root.checkbox_active[217] == True
+                    on_release: root.checkbox_click(self, self.active, "217")
+                    
+                CheckBox:
+                    id: 218
+                    active: root.checkbox_active[218] == True
+                    on_release: root.checkbox_click(self, self.active, "218")
+                
+                CheckBox:
+                    id: 219
+                    active: root.checkbox_active[219] == True
+                    on_release: root.checkbox_click(self, self.active, "219")
+                    
+                CheckBox:
+                    id: 220
+                    active: root.checkbox_active[220] == True
+                    on_release: root.checkbox_click(self, self.active, "220")
+                
+                CheckBox:
+                    id: 221
+                    active: root.checkbox_active[221] == True
+                    on_release: root.checkbox_click(self, self.active, "221")
+                    
+                CheckBox:
+                    id: 222
+                    active: root.checkbox_active[222] == True
+                    on_release: root.checkbox_click(self, self.active, "222")
+                
+                CheckBox:
+                    id: 223
+                    active: root.checkbox_active[223] == True
+                    on_release: root.checkbox_click(self, self.active, "223")
+                    
+                CheckBox:
+                    id: 224
+                    active: root.checkbox_active[224] == True
+                    on_release: root.checkbox_click(self, self.active, "224")
+                
+                CheckBox:
+                    id: 225
+                    active: root.checkbox_active[225] == True
+                    on_release: root.checkbox_click(self, self.active, "225")
+                    
+                CheckBox:
+                    id: 226
+                    active: root.checkbox_active[226] == True
+                    on_release: root.checkbox_click(self, self.active, "226")
+
+                CheckBox:
+                    id: 227
+                    active: root.checkbox_active[227] == True
+                    on_release: root.checkbox_click(self, self.active, "227")
+                    
+                CheckBox:
+                    id: 228
+                    active: root.checkbox_active[228] == True
+                    on_release: root.checkbox_click(self, self.active, "228")
+                
+                CheckBox:
+                    id: 229
+                    active: root.checkbox_active[229] == True
+                    on_release: root.checkbox_click(self, self.active, "229")
+                    
+                CheckBox:
+                    id: 230
+                    active: root.checkbox_active[230] == True
+                    on_release: root.checkbox_click(self, self.active, "230")
+                
+                CheckBox:
+                    id: 231
+                    active: root.checkbox_active[231] == True
+                    on_release: root.checkbox_click(self, self.active, "231")
+                    
+                CheckBox:
+                    id: 232
+                    active: root.checkbox_active[232] == True
+                    on_release: root.checkbox_click(self, self.active, "232")
+                
+                CheckBox:
+                    id: 233
+                    active: root.checkbox_active[233] == True
+                    on_release: root.checkbox_click(self, self.active, "233")
+                    
+                CheckBox:
+                    id: 234
+                    active: root.checkbox_active[234] == True
+                    on_release: root.checkbox_click(self, self.active, "234")
+                
+                CheckBox:
+                    id: 235
+                    active: root.checkbox_active[235] == True
+                    on_release: root.checkbox_click(self, self.active, "235")
+                    
+                CheckBox:
+                    id: 236
+                    active: root.checkbox_active[236] == True
+                    on_release: root.checkbox_click(self, self.active, "236")
+                
+                CheckBox:
+                    id: 237
+                    active: root.checkbox_active[237] == True
+                    on_release: root.checkbox_click(self, self.active, "237")
+                    
+                CheckBox:
+                    id: 238
+                    active: root.checkbox_active[238] == True
+                    on_release: root.checkbox_click(self, self.active, "238")
+                
+                CheckBox:
+                    id: 239
+                    active: root.checkbox_active[239] == True
+                    on_release: root.checkbox_click(self, self.active, "239")
+                    
+                CheckBox:
+                    id: 240
+                    active: root.checkbox_active[240] == True
+                    on_release: root.checkbox_click(self, self.active, "240")
+                
+                CheckBox:
+                    id: 241
+                    active: root.checkbox_active[241] == True
+                    on_release: root.checkbox_click(self, self.active, "241")
+                    
+                CheckBox:
+                    id: 242
+                    active: root.checkbox_active[242] == True
+                    on_release: root.checkbox_click(self, self.active, "242")
+
+                #Label:
+                #    text: "KICK"
+
+                CheckBox:
+                    id: 111
+                    active: root.checkbox_active[111] == True
+                    on_release: root.checkbox_click(self, self.active, "111")
+                    
+                CheckBox:
+                    id: 112
+                    active: root.checkbox_active[112] == True
+                    on_release: root.checkbox_click(self, self.active, "112")
+                
+                CheckBox:
+                    id: 113
+                    active: root.checkbox_active[113] == True
+                    on_release: root.checkbox_click(self, self.active, "113")
+                    
+                CheckBox:
+                    id: 114
+                    active: root.checkbox_active[114] == True
+                    on_release: root.checkbox_click(self, self.active, "114")
+                
+                CheckBox:
+                    id: 115
+                    active: root.checkbox_active[115] == True
+                    on_release: root.checkbox_click(self, self.active, "115")
+                    
+                CheckBox:
+                    id: 116
+                    active: root.checkbox_active[116] == True
+                    on_release: root.checkbox_click(self, self.active, "116")
+                
+                CheckBox:
+                    id: 117
+                    active: root.checkbox_active[117] == True
+                    on_release: root.checkbox_click(self, self.active, "117")
+                    
+                CheckBox:
+                    id: 118
+                    active: root.checkbox_active[118] == True
+                    on_release: root.checkbox_click(self, self.active, "118")
+                
+                CheckBox:
+                    id: 119
+                    active: root.checkbox_active[119] == True
+                    on_release: root.checkbox_click(self, self.active, "119")
+                    
+                CheckBox:
+                    id: 120
+                    active: root.checkbox_active[120] == True
+                    on_release: root.checkbox_click(self, self.active, "120")
+                
+                CheckBox:
+                    id: 121
+                    active: root.checkbox_active[121] == True
+                    on_release: root.checkbox_click(self, self.active, "121")
+                    
+                CheckBox:
+                    id: 122
+                    active: root.checkbox_active[122] == True
+                    on_release: root.checkbox_click(self, self.active, "122")
+                
+                CheckBox:
+                    id: 123
+                    active: root.checkbox_active[123] == True
+                    on_release: root.checkbox_click(self, self.active, "123")
+                    
+                CheckBox:
+                    id: 124
+                    active: root.checkbox_active[124] == True
+                    on_release: root.checkbox_click(self, self.active, "124")
+                
+                CheckBox:
+                    id: 125
+                    active: root.checkbox_active[125] == True
+                    on_release: root.checkbox_click(self, self.active, "125")
+                    
+                CheckBox:
+                    id: 126
+                    active: root.checkbox_active[126] == True
+                    on_release: root.checkbox_click(self, self.active, "126")
+
+                CheckBox:
+                    id: 127
+                    active: root.checkbox_active[127] == True
+                    on_release: root.checkbox_click(self, self.active, "127")
+                    
+                CheckBox:
+                    id: 128
+                    active: root.checkbox_active[128] == True
+                    on_release: root.checkbox_click(self, self.active, "128")
+                
+                CheckBox:
+                    id: 129
+                    active: root.checkbox_active[129] == True
+                    on_release: root.checkbox_click(self, self.active, "129")
+                    
+                CheckBox:
+                    id: 130
+                    active: root.checkbox_active[130] == True
+                    on_release: root.checkbox_click(self, self.active, "130")
+                
+                CheckBox:
+                    id: 131
+                    active: root.checkbox_active[131] == True
+                    on_release: root.checkbox_click(self, self.active, "131")
+                    
+                CheckBox:
+                    id: 132
+                    active: root.checkbox_active[132] == True
+                    on_release: root.checkbox_click(self, self.active, "132")
+                
+                CheckBox:
+                    id: 133
+                    active: root.checkbox_active[133] == True
+                    on_release: root.checkbox_click(self, self.active, "133")
+                    
+                CheckBox:
+                    id: 134
+                    active: root.checkbox_active[134] == True
+                    on_release: root.checkbox_click(self, self.active, "134")
+                
+                CheckBox:
+                    id: 135
+                    active: root.checkbox_active[135] == True
+                    on_release: root.checkbox_click(self, self.active, "135")
+                    
+                CheckBox:
+                    id: 136
+                    active: root.checkbox_active[136] == True
+                    on_release: root.checkbox_click(self, self.active, "136")
+                
+                CheckBox:
+                    id: 137
+                    active: root.checkbox_active[137] == True
+                    on_release: root.checkbox_click(self, self.active, "137")
+                    
+                CheckBox:
+                    id: 138
+                    active: root.checkbox_active[138] == True
+                    on_release: root.checkbox_click(self, self.active, "138")
+                
+                CheckBox:
+                    id: 139
+                    active: root.checkbox_active[139] == True
+                    on_release: root.checkbox_click(self, self.active, "139")
+                    
+                CheckBox:
+                    id: 140
+                    active: root.checkbox_active[140] == True
+                    on_release: root.checkbox_click(self, self.active, "140")
+                
+                CheckBox:
+                    id: 141
+                    active: root.checkbox_active[141] == True
+                    on_release: root.checkbox_click(self, self.active, "141")
+                    
+                CheckBox:
+                    id: 142
+                    active: root.checkbox_active[142] == True
+                    on_release: root.checkbox_click(self, self.active, "142")
+
+        GridLayout:
+            size: root.width, root.height
+            size_hint: root.width, 0.1
+            cols: 8
+
+            Button:
+                id: back
+                text: "<<"
+                on_release: root.change_page(*args, "back")
+                    
+            Label:
+                id: drums_pg
+                text: "1"
+
+            Button:
+                text: ">>"
+                on_release: root.change_page(*args, "forward")
+
+            Button:
+                text: "COPY"
+                on_release: root.copy_page()
+
+            Button:
+                text: "PASTE"
+                on_release: root.paste_page()
+
+            Button:
+                text: "CLEAR"
+                on_release: root.clear_page()
+
+            Button:
+                text: "DELETE"
+                on_release: root.delete_page()
+
+            Button:
+                text: "MAIN MENU"
+                on_release:
+                    app.root.current = "MainMenuScreen"
+                    root.manager.transition.direction = "right"
