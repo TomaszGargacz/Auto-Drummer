@@ -1,17 +1,11 @@
 import kivy
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
-from kivy.properties import ObjectProperty
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.widget import Widget
-from kivy.clock import Clock, mainthread
-from kivy.properties import StringProperty, BooleanProperty, ListProperty
-from playsound import playsound
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.properties import BooleanProperty, ListProperty
 from pydub import AudioSegment
 from pydub.playback import play
 import threading
-import time
 
 # Clear terminal function useful for debugging
 def clear():
@@ -28,7 +22,6 @@ opened_hat = []
 ride = []
 crash = []
 
-
 bass_copied = []
 snare_copied = []
 low_tom_copied = []
@@ -38,7 +31,6 @@ closed_hat_copied = []
 opened_hat_copied = []
 ride_copied = []
 crash_copied = []
-
 
 for a in range (0, 32):
     bass[a] = bass.append(0)
@@ -81,7 +73,6 @@ for a in range (0, 32):
     ride_copied[a] = 0
     crash_copied[a] = 0
 
-
 drums_page = 1
 drums_pages = 1
 tempo = 80
@@ -90,8 +81,7 @@ one_tick_time = 60/tempo/metrum
 change_page_signal = False
 sound_to_play = "drums"
 
-page = 1
-
+# Drum samples for composing
 audio_in_file_kick = "C:\\Users\Majst\Documents\VS CODE\\Auto Drummer\\samples\\KICK.wav"
 audio_in_file_snare = "C:\\Users\Majst\Documents\VS CODE\\Auto Drummer\\samples\\SNARE.wav"
 audio_in_file_low_tom = "C:\\Users\Majst\Documents\VS CODE\\Auto Drummer\\samples\\TOM_LOW.wav"
@@ -102,6 +92,7 @@ audio_in_file_opened_hat = "C:\\Users\Majst\Documents\VS CODE\\Auto Drummer\\sam
 audio_in_file_ride = "C:\\Users\Majst\Documents\VS CODE\\Auto Drummer\\samples\\RIDE.wav"
 audio_in_file_crash = "C:\\Users\Majst\Documents\VS CODE\\Auto Drummer\\samples\\CRASH.wav"
 
+# Drum samples for checking
 audio_out_file_kick = "C:\\Users\Majst\Documents\VS CODE\\Auto Drummer\\samples\\KICK.mp3"
 audio_out_file_snare = "C:\\Users\Majst\Documents\VS CODE\\Auto Drummer\\samples\\SNARE.mp3"
 audio_out_file_low_tom = "C:\\Users\Majst\Documents\VS CODE\\Auto Drummer\\samples\\TOM_LOW.mp3"
@@ -158,55 +149,92 @@ class DrumsScreen(Screen):
 
     checkbox_active = ListProperty([BooleanProperty(False) for i in range(1000)])
 
+    def refresh_page(self):
+        for i in range (0, 32):
+            if snare[i+(drums_page-1)*32] == 1:
+                self.checkbox_active[i+211] = True
+            else:
+                self.checkbox_active[i+211] = False
+            if bass[i+(drums_page-1)*32] == 1:
+                self.checkbox_active[i+111] = True
+            else:
+                self.checkbox_active[i+111] = False
+            if low_tom[i+(drums_page-1)*32] == 1:
+                self.checkbox_active[i+311] = True
+            else:
+                self.checkbox_active[i+311] = False
+            if middle_tom[i+(drums_page-1)*32] == 1:
+                self.checkbox_active[i+411] = True
+            else:
+                self.checkbox_active[i+411] = False
+            if high_tom[i+(drums_page-1)*32] == 1:
+                self.checkbox_active[i+511] = True
+            else:
+                self.checkbox_active[i+511] = False
+            if closed_hat[i+(drums_page-1)*32] == 1:
+                self.checkbox_active[i+611] = True
+            else:
+                self.checkbox_active[i+611] = False
+            if opened_hat[i+(drums_page-1)*32] == 1:
+                self.checkbox_active[i+711] = True
+            else:
+                self.checkbox_active[i+711] = False
+            if ride[i+(drums_page-1)*32] == 1:
+                self.checkbox_active[i+811] = True
+            else:
+                self.checkbox_active[i+811] = False 
+            if crash[i+(drums_page-1)*32] == 1:
+                self.checkbox_active[i+911] = True
+            else:
+                self.checkbox_active[i+911] = False 
+
     def checkbox_click(self, instance, value, index):
-        global bass, snare, low_tom, middle_tom, high_tom, closed_hat, drums_page
+        global drums_page
 
         index = int(index)
 
         if value is True and index > 0:
             if index < 200:
-                bass[int(index)-111 + 32*(drums_page-1)]=1
+                bass[int(index)-111 + 32*(drums_page-1)] = 1
             elif index < 300:
-                snare[int(index)-211 + 32*(drums_page-1)]=1
+                snare[int(index)-211 + 32*(drums_page-1)] = 1
             elif index < 400:
-                low_tom[int(index)-311 + 32*(drums_page-1)]=1
+                low_tom[int(index)-311 + 32*(drums_page-1)] = 1
             elif index < 500:
-                middle_tom[int(index)-411 + 32*(drums_page-1)]=1
+                middle_tom[int(index)-411 + 32*(drums_page-1)] = 1
             elif index < 600:
-                high_tom[int(index)-511 + 32*(drums_page-1)]=1
+                high_tom[int(index)-511 + 32*(drums_page-1)] = 1
             elif index < 700:
-                closed_hat[int(index)-611 + 32*(drums_page-1)]=1
+                closed_hat[int(index)-611 + 32*(drums_page-1)] = 1
             elif index < 800:
-                opened_hat[int(index)-711 + 32*(drums_page-1)]=1
+                opened_hat[int(index)-711 + 32*(drums_page-1)] = 1
             elif index < 900:
-                ride[int(index)-811 + 32*(drums_page-1)]=1
+                ride[int(index)-811 + 32*(drums_page-1)] = 1
             elif index < 1000:
-                crash[int(index)-911 + 32*(drums_page-1)]=1
+                crash[int(index)-911 + 32*(drums_page-1)] = 1
 
         elif value is False and index > 0:
-                        
             if index < 200:
-                bass[int(index)-111 + 32*(drums_page-1)]=0
+                bass[int(index)-111 + 32*(drums_page-1)] = 0
             elif index < 300:
-                snare[int(index)-211 + 32*(drums_page-1)]=0
+                snare[int(index)-211 + 32*(drums_page-1)] = 0
             elif index < 400:
-                low_tom[int(index)-311 + 32*(drums_page-1)]=0
+                low_tom[int(index)-311 + 32*(drums_page-1)] = 0
             elif index < 500:
-                middle_tom[int(index)-411 + 32*(drums_page-1)]=0
+                middle_tom[int(index)-411 + 32*(drums_page-1)] = 0
             elif index < 600:
-                high_tom[int(index)-511 + 32*(drums_page-1)]=0
+                high_tom[int(index)-511 + 32*(drums_page-1)] = 0
             elif index < 700:
-                closed_hat[int(index)-611 + 32*(drums_page-1)]=0
+                closed_hat[int(index)-611 + 32*(drums_page-1)] = 0
             elif index < 800:
-                opened_hat[int(index)-711 + 32*(drums_page-1)]=0
+                opened_hat[int(index)-711 + 32*(drums_page-1)] = 0
             elif index < 900:
-                ride[int(index)-811 + 32*(drums_page-1)]=0
+                ride[int(index)-811 + 32*(drums_page-1)] = 0
             elif index < 1000:
-                crash[int(index)-911 + 32*(drums_page-1)]=0
+                crash[int(index)-911 + 32*(drums_page-1)] = 0
 
-    
     def change_page(self, *args):
-        global drums_page, drums_pages, bass, snare, low_tom, middle_tom, high_tom, closed_hat, ride, crash 
+        global drums_page, drums_pages, bass, snare, low_tom, middle_tom, high_tom, closed_hat, opened_hat, ride, crash 
 
         if drums_page > 1 and args[1] == "back":
             drums_page = drums_page - 1
@@ -238,45 +266,8 @@ class DrumsScreen(Screen):
 
         self.ids.drums_pg.text = str(drums_page)
 
-        for i in range (0, 32):
-            if snare[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+211] = True
-            else:
-                self.checkbox_active[i+211] = False
-            if bass[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+111] = True
-            else:
-                self.checkbox_active[i+111] = False
-            if low_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+311] = True
-            else:
-                self.checkbox_active[i+311] = False
-            if middle_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+411] = True
-            else:
-                self.checkbox_active[i+411] = False
-            if high_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+511] = True
-            else:
-                self.checkbox_active[i+511] = False
-            if closed_hat[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+611] = True
-            else:
-                self.checkbox_active[i+611] = False
-            if opened_hat[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+711] = True
-            else:
-                self.checkbox_active[i+711] = False
-            if ride[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+811] = True
-            else:
-                self.checkbox_active[i+811] = False 
-            if crash[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+911] = True
-            else:
-                self.checkbox_active[i+911] = False 
+        self.refresh_page()
 
-    
     def copy_page(self):
         for a in range (0, 32):
             bass_copied[a] = bass[a + (drums_page-1)*32]
@@ -288,7 +279,6 @@ class DrumsScreen(Screen):
             opened_hat_copied[a] = opened_hat[a + (drums_page-1)*32]
             ride_copied[a] = ride[a + (drums_page-1)*32]
             crash_copied[a] = crash[a + (drums_page-1)*32]
-
     
     def paste_page(self):
         for a in range (0, 32):
@@ -302,44 +292,7 @@ class DrumsScreen(Screen):
             ride[a + (drums_page-1)*32] = ride_copied[a]
             crash[a + (drums_page-1)*32] = crash_copied[a]
 
-        for i in range (0, 32):
-            if snare[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+211] = True
-            else:
-                self.checkbox_active[i+211] = False
-            if bass[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+111] = True
-            else:
-                self.checkbox_active[i+111] = False
-            if low_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+311] = True
-            else:
-                self.checkbox_active[i+311] = False
-            if middle_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+411] = True
-            else:
-                self.checkbox_active[i+411] = False
-            if high_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+511] = True
-            else:
-                self.checkbox_active[i+511] = False
-            if closed_hat[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+611] = True
-            else:
-                self.checkbox_active[i+611] = False
-            if opened_hat[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+711] = True
-            else:
-                self.checkbox_active[i+711] = False
-            if ride[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+811] = True
-            else:
-                self.checkbox_active[i+811] = False 
-            if crash[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+911] = True
-            else:
-                self.checkbox_active[i+911] = False 
-
+        self.refresh_page()
     
     def clear_page(self):
         for a in range (0, 32):
@@ -353,57 +306,12 @@ class DrumsScreen(Screen):
             ride[a + (drums_page-1)*32] = 0
             crash[a + (drums_page-1)*32] = 0
             
-        for i in range (0, 32):
-            if snare[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+211] = True
-            else:
-                self.checkbox_active[i+211] = False
-            if bass[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+111] = True
-            else:
-                self.checkbox_active[i+111] = False
-            if low_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+311] = True
-            else:
-                self.checkbox_active[i+311] = False
-            if middle_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+411] = True
-            else:
-                self.checkbox_active[i+411] = False
-            if high_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+511] = True
-            else:
-                self.checkbox_active[i+511] = False
-            if closed_hat[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+611] = True
-            else:
-                self.checkbox_active[i+611] = False
-            if opened_hat[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+711] = True
-            else:
-                self.checkbox_active[i+711] = False
-            if ride[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+811] = True
-            else:
-                self.checkbox_active[i+811] = False 
-            if crash[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+911] = True
-            else:
-                self.checkbox_active[i+911] = False 
+        self.refresh_page()
 
     def delete_page(self):
         global drums_pages, drums_page
+
         self.clear_page()
-        # for a in range (0, 32):
-        #     bass[a + (drums_page-1)*32] = 0
-        #     snare[a + (drums_page-1)*32] = 0
-        #     low_tom[a + (drums_page-1)*32] = 0
-        #     middle_tom[a + (drums_page-1)*32] = 0
-        #     high_tom[a + (drums_page-1)*32] = 0
-        #     closed_hat[a + (drums_page-1)*32] = 0
-        #     opened_hat[a + (drums_page-1)*32] = 0
-        #     ride[a + (drums_page-1)*32] = 0
-        #     crash[a + (drums_page-1)*32] = 0
 
         if drums_pages > 1:
             if drums_page != drums_pages:
@@ -427,48 +335,13 @@ class DrumsScreen(Screen):
                         opened_hat[a + 32 + (b+drums_page-1)*32] = 0
                         ride[a + 32 + (b+drums_page-1)*32] = 0
                         crash[a + 32 + (b+drums_page-1)*32] = 0
+            else:
+                drums_page = drums_page - 1
+                self.ids.drums_pg.text = str(drums_page)
 
-            #drums_page = drums_page - 1
             drums_pages = drums_pages - 1
 
-        for i in range (0, 32):
-            if snare[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+211] = True
-            else:
-                self.checkbox_active[i+211] = False
-            if bass[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+111] = True
-            else:
-                self.checkbox_active[i+111] = False
-            if low_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+311] = True
-            else:
-                self.checkbox_active[i+311] = False
-            if middle_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+411] = True
-            else:
-                self.checkbox_active[i+411] = False
-            if high_tom[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+511] = True
-            else:
-                self.checkbox_active[i+511] = False
-            if closed_hat[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+611] = True
-            else:
-                self.checkbox_active[i+611] = False
-            if opened_hat[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+711] = True
-            else:
-                self.checkbox_active[i+711] = False
-            if ride[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+811] = True
-            else:
-                self.checkbox_active[i+811] = False 
-            if crash[i+(drums_page-1)*32] == 1:
-                self.checkbox_active[i+911] = True
-            else:
-                self.checkbox_active[i+911] = False 
-            
+        self.refresh_page()
 
 # Switching between screens (in .kv file)
 class ScreenManagement(ScreenManager):
@@ -548,7 +421,6 @@ class MainMenuScreen(Screen):
         play_sound_thread.start()
 
     def play_in_background(self):
-
         if sound_to_play == "drums":
             play(AudioSegment.from_mp3(audio_out_file_mp3))
         elif sound_to_play == "kick":
@@ -568,8 +440,6 @@ class MainMenuScreen(Screen):
         elif sound_to_play == "ride":
             play(ride_sound)
         elif sound_to_play == "crash":
-            #sound = AudioSegment.from_wav(audio_in_file_crash)
-            #sound.export(audio_out_file_crash, format="mp3")
             play(crash_sound)
     
     def tempo(self):
@@ -577,7 +447,6 @@ class MainMenuScreen(Screen):
 
         tempo = int(self.tempo_set.text)
         one_tick_time = 60/tempo/metrum
-
     
     def metrum(self, value):
         global metrum, one_tick_time, tempo
@@ -586,7 +455,7 @@ class MainMenuScreen(Screen):
         one_tick_time = 60/tempo/metrum
         print("metrum: ", metrum)
             
-kv = Builder.load_file('AutoDrummerScreen.kv')          # Load app interface from .kv file
+kv = Builder.load_file('AutoDrummerScreen.kv')  # Load app interface from .kv file
 
 # Build application
 class MyApp(App):
